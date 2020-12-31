@@ -1,0 +1,12 @@
+{
+  "launch.start": {
+    "ID": "launch.start",
+    "cn": "正在启动游戏",
+    "en": "Starting the game"
+  },
+  "launch.ui.login_req": {
+    "ID": "launch.ui.login_req",
+    "cn": "正在进入游戏",
+    "en": "Entering the game"
+  }
+}
