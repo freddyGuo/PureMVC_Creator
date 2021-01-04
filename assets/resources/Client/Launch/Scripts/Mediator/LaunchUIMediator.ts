@@ -1,5 +1,5 @@
 import INotification from "../../../../../Scripts/Core/PureMVC/interface/INotification";
-import AppMediator from "../../../../../Scripts/App/AppMediator";
+import AppMediator from "../../../../../Scripts/App/View/AppMediator";
 import { EnumEvents } from "../../../../../Scripts/App/Enum/EnumEvents";
 import Global from "../../../../../Scripts/App/Global";
 import { cccExtensionClass } from "../../../../../Scripts/Lib/CCC";

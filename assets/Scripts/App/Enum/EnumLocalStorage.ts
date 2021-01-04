@@ -9,4 +9,8 @@ export enum EnumLocalStorage {
     DailyData = "DailyData",
     /** Game Language */
     GameLanguage = "GameLanguage", 
+    /** App background music  Volumn*/
+    MusicVolumn = "MusicVolumn",
+    /** App Sound Volumn */
+    SoundVolumn = "SoundVolumn",
 }

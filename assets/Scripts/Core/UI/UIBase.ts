@@ -1,9 +1,6 @@
 import Global from "../../App/Global";
 
 export default class UIBase extends cc.Component {
-    onLoad(){
-        
-    }
      /**
      * get the cc.node by the path of  this node
      * @param path 

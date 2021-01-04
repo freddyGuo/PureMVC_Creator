@@ -25,10 +25,11 @@ export class PureModel implements IModel {
 
     }
     registerProxy(proxy: IProxy): void {
-        if(this.proxyMap[proxy.getProxyName()]){
-            console.error(proxy.getProxyName()  + " is  alealy exit, please checkout it")
+        let name:string = proxy.getProxyName()
+        if(this.proxyMap[name]){
+            console.error(name  + " is  alealy exit, please checkout it")
         }
-        this.proxyMap[proxy.getProxyName()] = proxy;
+        this.proxyMap[name] = proxy;
         proxy.onRegister();
     }
     removeProxy(proxyName: string): IProxy {

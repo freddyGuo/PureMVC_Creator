@@ -1,4 +1,4 @@
-import AppMediator from "../../App/AppMediator";
+import AppMediator from "../../App/View/AppMediator";
 
 export default  interface IWorld {
     mediatorList:AppMediator;

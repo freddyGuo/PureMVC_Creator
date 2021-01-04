@@ -58,6 +58,7 @@ export class PureFacade implements IFacade {
     }
 
     registerCommand(notificationName: string, commandClassRef: Function): void {
+        console.log("registerCommand", notificationName);
         this.controller.registerCommand(notificationName, commandClassRef);
     }
     removeCommand(notificationName: string): void {

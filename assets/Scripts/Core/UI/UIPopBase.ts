@@ -1,17 +1,17 @@
 import UIBase from "./UIBase";
 
-export default class UIPopBase extends UIBase {
+export default abstract class UIPopBase extends UIBase {
+    private isPlayingShowAnim: boolean = false;            
+    private isPlayingHideAnim: boolean = false;
     /** Is there a black background frame */
     isShowMask         : boolean = true;       
     /** Whether to close the pop-up window  */
     isHideClick    : boolean = true;
     nodeMain         : cc.Node;                     
     nodeMask         : cc.Node;                     
-    nodeBlock        : cc.Node;    
-    isPlayingShowAnim: boolean = false;            
-    isPlayingHideAnim: boolean = false;            
+    nodeBlock        : cc.Node;            
     onLoad(){
-        this.nodeMain = cc.find("mainNode", this.node);
+        this.nodeMain = cc.find("nodeMain", this.node);
         this.isShowMask && this.initMask();
         this.isHideClick && this.initBlock();
     }
@@ -49,17 +49,11 @@ export default class UIPopBase extends UIBase {
             this.nodeBlock.setContentSize(cc.size(Math.ceil(viewsize.width * 5), Math.ceil(viewsize.height * 5)));
             this.nodeBlock.parent = this.node;
             this.nodeBlock.on(cc.Node.EventType.TOUCH_END, () => {
-                this.isHideClick && this.onClickClose();
+                this.isHideClick && this.hideOut();
             })
             resolve();
         });
     }
-
-    //关闭按钮
-    onClickClose() {
-        this.hideOut();
-    }
-
     /**
      * Play Layer hidden animation
      * @param removenode 
@@ -117,14 +111,10 @@ export default class UIPopBase extends UIBase {
     /**
      * enter animation finished
      */
-    onShowInFinished() {
-        
-    }
+    abstract onShowInFinished():void;
     /**
      * hidden animation finished
      */
-    onHideOutFinished() {
-        
-    }
+    abstract onHideOutFinished():void;
     
 }

@@ -4,7 +4,6 @@ import { EnumWorld } from "../../../../Scripts/App/Enum/EnumWorld";
 import Global from "../../../../Scripts/App/Global";
 import { cccExtensionClass } from "../../../../Scripts/Lib/CCC";
 import AdapterHelper from "../../../../Scripts/Utils/UI/AdapterHelper";
-import ChangeWorldCmd from "./Controller/ChangeWorldCmd";
 
 const {ccclass} = cc._decorator;
 

@@ -1,4 +1,4 @@
-import AppMediator from "../../App/AppMediator";
+import AppMediator from "../../App/View/AppMediator";
 import { EnumUILevel } from "../../App/Enum/EnumUI";
 import Global from "../../App/Global";
 import UIBase from "./UIBase";

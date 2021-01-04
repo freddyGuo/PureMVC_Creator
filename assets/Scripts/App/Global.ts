@@ -30,7 +30,8 @@ import Logger from "../Utils/Logger";
 import GlobalConfig from "./Config/GlobalConfig";
 import AppFacade from "./AppFacade";
 import { EnumEvents } from "./Enum/EnumEvents";
-import GameDataManager from "./Data/GameDataManager";
+import GameDataManager from "./Model/GameDataManager";
+import { EnumCommand } from "./Enum/EnumCommand";
 
 export default class Global {
     static dataMgr:GameDataManager;
@@ -40,7 +41,6 @@ export default class Global {
     static timerMgr:TimerManager;
     static uiMgr: UIMananger;
     static globalCfg: GlobalConfig;
-    // static worldMgr: WorldManager;
     static logger:Logger;
     static facade:AppFacade;
 
@@ -53,12 +53,12 @@ export default class Global {
         this.timerMgr  = new TimerManager();
         this.uiMgr     = new UIMananger();
         this.globalCfg = new GlobalConfig();
-        // this.worldMgr  = new WorldManager();
         this.logger    = new Logger();
         this.facade    = AppFacade.getInstance();
     }
 
     public static async init(){
+        Global.facade.sendNotification(EnumCommand.InitProxy);
         Global.facade.sendNotification(EnumEvents.GameInitEvent, 0.5);
         this.dataMgr.init();
         await this.lanMgr.init();

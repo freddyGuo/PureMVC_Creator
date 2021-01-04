@@ -1,9 +1,10 @@
-import IWorld from "../../../../../Scripts/Core/World/IWorld";
-import AppProxy from "../../../../../Scripts/App/AppProxy";
-import { EnumWorld } from "../../../../../Scripts/App/Enum/EnumWorld";
-import Global from "../../../../../Scripts/App/Global";
-import LaunchWorld from "../../../Launch/Scripts/Proxy/LaunchWorld";
-import { cccExtensionClass } from "../../../../../Scripts/Lib/CCC";
+import IWorld from "../../Core/World/IWorld";
+import AppProxy from "../AppProxy";
+import { EnumWorld } from "../Enum/EnumWorld";
+import Global from "../Global";
+import LaunchWorld from "../../../resources/Client/Launch/Scripts/Proxy/LaunchWorld";
+import LoginWorld from "../../../resources/Client/Login/Scripts/Model/LoginWorld";
+import { cccExtensionClass } from "../../Lib/CCC";
 
 @cccExtensionClass
 export default class ChangeWorldProxy extends AppProxy {
@@ -28,9 +29,9 @@ export default class ChangeWorldProxy extends AppProxy {
     public onActive(): void {
         this.worldMap = new Map();
         this.registerWold(EnumWorld.Launch, new LaunchWorld())
+        this.registerWold(EnumWorld.Login, new LoginWorld());
     }
     public onDestroy(): void {
-        
     }
     /**
      * Register the world
