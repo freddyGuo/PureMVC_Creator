@@ -1,4 +1,4 @@
-export default class GameAudioModel {
+export default class AppAudioData {
     /** ID of the background music being played */
     playingBackgroundMusic: number = -1;      
     /**  Sound effects during playback */

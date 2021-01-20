@@ -22,18 +22,7 @@ export class PureFacade implements IFacade {
         }
         return PureFacade.instance;
     };
-
-    constructor (){
-        this.model = null;
-        this.view = null;
-        this.controller = null;
-        if(PureFacade.instance) {
-            throw Error(PureFacade.SINGLETON_MSG);
-        }
-        PureFacade.instance = this;
-        this.initializeFacade();
-    }
-
+    
     public initializeFacade(){
         this.initializeModel();
         this.initializeController();
@@ -68,9 +57,11 @@ export class PureFacade implements IFacade {
         return this.controller.hasCommand(notificationName);
     }
     registerProxy(proxy: IProxy): void {
+        console.log("registerProxy", proxy.getProxyName());
         this.model.registerProxy(proxy);
     }
     retrieveProxy(proxyName: string): IProxy {
+        console.log("retrieveProxy", proxyName);
         return this.model.retrieveProxy(proxyName);
     }
     removeProxy(proxyName: string): IProxy {

@@ -1,13 +1,20 @@
 import Global from "../Global";
-import GameAudioModel from "../Model/GameAudioModel";
-import GameLocalDataProxy from "../Model/GameLocalDataProxy";
+import AppAudioData from "../Model/AppAudioData";
+import AppDataProxy from "../Model/Proxy/AppDataProxy";
+import AppLocalDataProxy from "../Model/Proxy/AppLocalDataProxy";
 
 export default class AudioManager {
-    localDataProxy:GameLocalDataProxy;
-    audioData:GameAudioModel;
+    localDataProxy:AppLocalDataProxy;
+    appDataProxy:AppDataProxy;
     init(){
+        this.localDataProxy = <AppLocalDataProxy>Global.facade.retrieveProxy(cc.js.getClassName(AppLocalDataProxy));
+        this.appDataProxy = <AppDataProxy>Global.facade.retrieveProxy(cc.js.getClassName(AppDataProxy));
         cc.game.on(cc.game.EVENT_HIDE, this._hideToBackGround, this);
         cc.game.on(cc.game.EVENT_SHOW, this._showFromBackGround, this);
+    }
+
+    get audioData(){
+        return this.appDataProxy.getAudioData();
     }
 
     private _showFromBackGround(){
@@ -90,6 +97,13 @@ export default class AudioManager {
                 Global.logger.error(`load sound failed ${error}`);
             }
         }
+    }
+
+    public stopAllSound(){
+        this.audioData.playingSoundList.forEach(id=>{
+            cc.audioEngine.stop(id);
+        })
+        this.audioData.playingSoundList = [];
     }
 
 }

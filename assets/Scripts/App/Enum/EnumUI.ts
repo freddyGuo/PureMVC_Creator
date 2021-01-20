@@ -7,7 +7,7 @@ export enum EnumUILevel {
 }
 
 export enum EnumUI {
-    Launch = "Client/Launch/Prefabs/Launch",
-    Login = "Client/Login/Prefabs/Login",
+    Launch             = "Client/Launch/Prefabs/Launch",
+    Login              = "Client/Login/Prefabs/Login",
     LoginChangeAccount = "Client/Login/Prefabs/ChangeAccount",
 }

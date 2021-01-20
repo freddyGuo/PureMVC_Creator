@@ -7,6 +7,7 @@
  * @author freddyGuo<https://github.com/freddyGuo>
  */
 
+import { EnumEvents } from "../../App/Enum/EnumEvents";
 import { EnumLan } from "../../App/Enum/EnumLan";
 import { EnumLocalStorage } from "../../App/Enum/EnumLocalStorage";
 import Global from "../../App/Global";
@@ -35,9 +36,9 @@ export default class LanManager {
         if(this._curLan == lan){
             return
         }
-
         this._curLan = lan;
-        Global.dataMgr.localDB.setData(EnumLocalStorage.GameLanguage, lan);
+        Global.facade.sendNotification(EnumEvents.ChangeLanguage, this.curLan);
+        // Global.dataMgr.localDB.setData(EnumLocalStorage.GameLanguage, lan);
         this.resetLanbel();
         this.resetSprite();
         this.resetEditBox();
@@ -83,9 +84,9 @@ export default class LanManager {
      * load language.json and cache it
      */
     public async init(){
-        let lanJson = await Global.loaderMgr.loadRes(this._lanCfgPath)
-        this._languageData = lanJson["json"];
-        this.curLan = Global.dataMgr.localDB.getString(EnumLocalStorage.GameLanguage, this._curLan) as EnumLan;
+        // let lanJson = await Global.loaderMgr.loadRes(this._lanCfgPath)
+        // this._languageData = lanJson["json"];
+        // this.curLan = Global.dataMgr.localDB.getString(EnumLocalStorage.GameLanguage, this._curLan) as EnumLan;
     }
 
     /**

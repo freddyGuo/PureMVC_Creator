@@ -7,6 +7,7 @@ import LaunchUIMediator from "../Mediator/LaunchUIMediator";
 import AppMediator from "../../../../../Scripts/App/View/AppMediator";
 import {EnumEvents } from "../../../../../Scripts/App/Enum/EnumEvents";
 import { EnumCommand } from "../../../../../Scripts/App/Enum/EnumCommand";
+import { EnumGameID } from "../../../../../Scripts/App/Enum/EnumGameID";
 
 export default class LaunchWorld implements IWorld {
     mediatorList: AppMediator;
@@ -24,7 +25,7 @@ export default class LaunchWorld implements IWorld {
     }
     initCommand() {
               
-    }
+}
    
     getWorldName(): string {
         return EnumWorld.Launch;
@@ -34,8 +35,12 @@ export default class LaunchWorld implements IWorld {
     async start(){
         let LaunchMediator = Global.facade.getAndCreateMediator(new LaunchUIMediator());
         await Global.uiMgr.showUI(EnumUI.Launch, EnumUILevel.Base, [LaunchMediator]);
-        await Global.init();
-        Global.facade.sendNotification(EnumEvents.GameInitEvent, 1);
-        Global.facade.sendNotification(EnumCommand.ChangeWorld, EnumWorld.Login);
+        Global.facade.sendNotification(EnumCommand.InitApp);        
+        // Global.facade.sendNotification(EnumEvents.GameLaunchEvent, 0.5);   
+        // 
     }
+    // enterGame(){
+    //     Global.facade.sendNotification(EnumCommand.ChangeWorld, EnumWorld.Login);
+    // }
+
 }

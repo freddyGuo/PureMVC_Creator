@@ -1,4 +1,8 @@
 export enum EnumCommand {
+    /** change app world */
     ChangeWorld = "ChangeWorld",
-    InitProxy = "InitLocalData"
+    /** init game proxy */
+    InitApp = "InitApp",
+    /** start check assets hot update */
+    CheckAssetsUpdate = "CheckAssetsUpdate"
 }

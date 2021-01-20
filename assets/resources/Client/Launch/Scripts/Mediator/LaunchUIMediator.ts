@@ -14,7 +14,7 @@ export default class LaunchUIMediator extends AppMediator {
 
     onActive(): void {
         this.viewComponent.nodeProgress.progress = 0;
-        this.registerNotification(EnumEvents.GameInitEvent, this.onGameInitEvent)    
+        this.registerNotification(EnumEvents.GameLaunchEvent, this.onGameInitEvent)    
         Global.timerMgr.setSchedule(this.getMediatorName(), this.update.bind(this), 1/60, -1, 0);
         this.viewComponent.updateProgress(this.curProgeress);
     }

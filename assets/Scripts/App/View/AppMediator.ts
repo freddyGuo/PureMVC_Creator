@@ -1,3 +1,4 @@
+import INotification from "../../Core/PureMVC/interface/INotification";
 import { PureMediator } from "../../Core/PureMVC/PureMediator";
 import { PureObserver } from "../../Core/PureMVC/PureObserver";
 import UIBase from "../../Core/UI/UIBase";
@@ -37,8 +38,6 @@ export default  abstract class AppMediator extends PureMediator {
         this.onDestroy();
     }
 
-
-
     /**
      * Add a new way to register PureObserver, after Mediator is registered, you can also register observer.
      * And when the mediator is removed, it will automatically cancel the monitoring
@@ -50,7 +49,19 @@ export default  abstract class AppMediator extends PureMediator {
         Global.facade.view.registerObserver(name, new PureObserver(callback, this))
     }
 
-    public addClickEvent(clickeNode: cc.Node, callback: Function, param?: any, time?: number, soundPath?: string){
+    handleNotification(notification: INotification){
+
+    }
+
+    /**
+     * Register button click event
+     * @param clickeNode 
+     * @param callback 
+     * @param soundPath sound path
+     * @param param 
+     * @param time How much time can only be clicked again, the default is 0.2 seconds
+     */
+    public addClickEvent(clickeNode: cc.Node, callback: Function, soundPath?: string, param?: any, time?: number){
         if (!clickeNode) {
             Global.logger.error("addClickEvent clickedNode is null");
             return
@@ -68,7 +79,7 @@ export default  abstract class AppMediator extends PureMediator {
         }
         clickeNode.on(cc.Node.EventType.TOUCH_END, (dt) => {
             let isOkPlaySound = (soundPath && soundPath.trim() != "");
-            // isOkPlaySound && Global.audioMgr.playSound(soundPath);
+            isOkPlaySound && Global.audioMgr.playSound(soundPath);
             callback && callback(param);
             button && (button.interactable = false);
             clickeNode.getComponent(cc.Component).scheduleOnce(() => {

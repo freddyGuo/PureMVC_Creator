@@ -1,11 +1,11 @@
 import AppMediator from "../../../../../Scripts/App/View/AppMediator";
-import { EnumEvents } from "../../../../../Scripts/App/Enum/EnumEvents";
 import { EnumUI, EnumUILevel } from "../../../../../Scripts/App/Enum/EnumUI";
 import { EnumWorld } from "../../../../../Scripts/App/Enum/EnumWorld";
 import Global from "../../../../../Scripts/App/Global";
 import IWorld from "../../../../../Scripts/Core/World/IWorld";
 import LoginMediator from "../View/LoginMediator";
 import LoginUI from "../View/LoginUI";
+import ChangeAccountUI from "../View/ChangeAccountUI";
 
 export default class LoginWorld implements IWorld {
     mediatorList: AppMediator;
@@ -21,6 +21,7 @@ export default class LoginWorld implements IWorld {
     }
     initUI() {
         Global.uiMgr.registerUI(EnumUI.Login, LoginUI);
+        Global.uiMgr.registerUI(EnumUI.LoginChangeAccount, ChangeAccountUI);
     }
     initProxy() {
         

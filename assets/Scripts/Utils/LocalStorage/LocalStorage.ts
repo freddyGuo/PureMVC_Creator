@@ -1,5 +1,5 @@
 /**
- * copyright (c) 2020 Freddy Guo. All rights reserved. Licensed under the MIT License 
+ * copyright (c) 2020-2030 Freddy Guo. All rights reserved. Licensed under the MIT License 
  * @author freddyGuo<https://github.com/freddyGuo>
  */
 import {EnumLocalStorage } from "../../App/Enum/EnumLocalStorage";
