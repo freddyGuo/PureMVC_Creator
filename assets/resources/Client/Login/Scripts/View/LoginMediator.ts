@@ -1,11 +1,17 @@
 import { EnumAudio } from "../../../../../Scripts/App/Enum/EnumAudio";
 import { EnumUI, EnumUILevel } from "../../../../../Scripts/App/Enum/EnumUI";
 import Global from "../../../../../Scripts/App/Global";
-import AppMediator from "../../../../../Scripts/App/View/AppMediator";
+import AppMediator from "../../../../../Scripts/App/AppMediator";
 import ChangeAccountMediator from "./ChangeAccountMediator";
 import LoginUI from "./LoginUI";
 
 export default class LoginMediator extends AppMediator {
+    onResume(): void {
+        
+    }
+    onPaused(): void {
+        
+    }
     viewComponent:LoginUI;
     onActive(): void {
         this.addClickEvent(this.viewComponent.btnChangeAccount, this.onBtnChangeAccountClicked.bind(this));

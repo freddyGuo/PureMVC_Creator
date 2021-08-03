@@ -14,10 +14,18 @@ export default class CheckHotUpdateProxy extends AppProxy{
     onActive(): void {
         this.updateData = new AppHotUpdateData();
         this.setData(this.updateData);
+        this.init();
         this.gameDataProxy  = <AppDataProxy>Global.facade.retrieveProxy(cc.js.getClassName(AppDataProxy));
         this.localDataProxy = <AppLocalDataProxy>Global.facade.retrieveProxy(cc.js.getClassName(AppLocalDataProxy))
     }
+    getData():AppHotUpdateData {
+        return this.updateData;
+    }
     onDestroy(): void {
+        
+    }
+
+    init(){
         
     }
 

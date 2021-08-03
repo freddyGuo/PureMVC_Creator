@@ -47,7 +47,6 @@ export class PureFacade implements IFacade {
     }
 
     registerCommand(notificationName: string, commandClassRef: Function): void {
-        console.log("registerCommand", notificationName);
         this.controller.registerCommand(notificationName, commandClassRef);
     }
     removeCommand(notificationName: string): void {
@@ -57,7 +56,6 @@ export class PureFacade implements IFacade {
         return this.controller.hasCommand(notificationName);
     }
     registerProxy(proxy: IProxy): void {
-        console.log("registerProxy", proxy.getProxyName());
         this.model.registerProxy(proxy);
     }
     retrieveProxy(proxyName: string): IProxy {
@@ -98,7 +96,6 @@ export class PureFacade implements IFacade {
         }
     }
     sendNotification(name: string, body?: any, type?: string): void {
-        console.log("____sendNotification_____", name, body)
         if (typeof body === "undefined") { body = null; }
         if (typeof type === "undefined") { type = null; }
         this.notifyObservers(new PureNotification(name, body, type));        

@@ -45,7 +45,7 @@ export default class UIPopAnim {
      * Play Layer to enter the animation
      */
     public playShowIn() {
-        return new Promise((resolved, reject)=>{
+        return new Promise<void>((resolved, reject)=>{
             this.isPlayingHideAnim = false;
             if (this.isPlayingShowAnim) {
                 resolved()
@@ -77,7 +77,7 @@ export default class UIPopAnim {
      * Play Layer hidden animation
      */
     public playHideOut() {
-        return new Promise((resolved, reject)=>{
+        return new Promise<void>((resolved, reject)=>{
             this.isPlayingShowAnim = false;
             if (this.isPlayingHideAnim) {
                 resolved();

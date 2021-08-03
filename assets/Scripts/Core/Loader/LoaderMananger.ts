@@ -109,7 +109,7 @@ export default class LoaderManager {
     }
 
     /**
-     *  
+     * 批量加载资源
      * @param urlList 
      * @param assetType 
      * @param progressCallback 

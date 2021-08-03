@@ -11,6 +11,7 @@ const {ccclass} = cc._decorator;
 @cccExtensionClass
 @ccclass
 export default class Driver extends cc.Component {
+    
     onLoad () {
         AdapterHelper.fixApdater();
         Global.create();

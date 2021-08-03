@@ -23,7 +23,10 @@ export default class AudioManager {
     private _hideToBackGround(){
         cc.audioEngine.pauseAll();
     }
-
+    /**
+     * 获取游戏背景音乐声音大小
+     * @returns 数字区间0-1
+     */
     public getMusicVolumn(){
         return this.localDataProxy.localData.musicVolumn;
     }
@@ -34,18 +37,27 @@ export default class AudioManager {
         this.localDataProxy.localData.musicVolumn = volumn;
         this.localDataProxy.saveLocalData();
     }
-
+    /**
+     * 获取游戏音效声音大小
+     * @returns 数字区间0-1
+     */
     public getSoundVolumn(){
         return this.localDataProxy.localData.soundVolumn;
     }
-
+    /**
+     * 设置游戏声音大小
+     * @param volumn 区间0-1
+     */
     public soundVolumn(volumn:number){
         volumn < 0 && (volumn = 0);
         volumn > 1 && (volumn = 1);
         this.localDataProxy.localData.soundVolumn = volumn;
         this.localDataProxy.saveLocalData();
     }
-    
+    /**
+     * 保存游戏是否震动数据
+     * @param isVirate boolean 
+     */
     public setVirate(isVirate: boolean) {
        this.localDataProxy.localData.isVirate = isVirate;
        this.localDataProxy.saveLocalData();
@@ -63,20 +75,30 @@ export default class AudioManager {
             Global.logger.error(`load music failed ${error}`); 
         }
     }
-
+    /**
+     * 停止播放游戏背景音乐
+     */
     public stopMusic(){
         cc.audioEngine.stopAll();
         this.audioData.musicId = -1;
     }
-
+    /**
+     * 恢复播放游戏背景音乐
+     */
     public resumeMusic(){
         this.audioData.musicId != -1 && cc.audioEngine.resume(this.audioData.musicId)
     }
-
+    /**
+     * 暂停播放游戏背景音乐
+     */
     public pauseMusic(){
         this.audioData.musicId != -1 && cc.audioEngine.pause(this.audioData.musicId)
     }
-
+    /**
+     * 播放游戏音效
+     * @param path Resources文件下内的资源路径
+     * @param callback 播放完毕的回调函数
+     */
     public async playSound(path: string, callback: Function = undefined){
         if (path != "" && this.getSoundVolumn() > 0) {
             try {
@@ -98,7 +120,9 @@ export default class AudioManager {
             }
         }
     }
-
+    /**
+     * 停止播放所有游戏音效
+     */
     public stopAllSound(){
         this.audioData.playingSoundList.forEach(id=>{
             cc.audioEngine.stop(id);

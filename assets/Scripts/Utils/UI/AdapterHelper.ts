@@ -1,5 +1,7 @@
 const {ccclass, property} = cc._decorator;
-
+/**
+ * 屏幕自适应
+ */
 @ccclass
 export default class AdapterHelper{
 

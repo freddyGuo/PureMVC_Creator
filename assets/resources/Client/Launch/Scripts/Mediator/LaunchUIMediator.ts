@@ -1,5 +1,5 @@
 import INotification from "../../../../../Scripts/Core/PureMVC/interface/INotification";
-import AppMediator from "../../../../../Scripts/App/View/AppMediator";
+import AppMediator from "../../../../../Scripts/App/AppMediator";
 import { EnumEvents } from "../../../../../Scripts/App/Enum/EnumEvents";
 import Global from "../../../../../Scripts/App/Global";
 import { cccExtensionClass } from "../../../../../Scripts/Lib/CCC";
@@ -7,6 +7,7 @@ import LaunchUI from "../UI/LaunchUI";
 
 @cccExtensionClass
 export default class LaunchUIMediator extends AppMediator {
+    
     viewComponent : LaunchUI;
     targetProgress: number = 0.4;
     progressSpeed : number = 0.2;
@@ -19,7 +20,14 @@ export default class LaunchUIMediator extends AppMediator {
         this.viewComponent.updateProgress(this.curProgeress);
     }
 
+    onResume(): void {
+        
+    }
+    onPaused(): void {
+        
+    }
 
+    
     onDestroy(): void {
         this.viewComponent.unscheduleAllCallbacks();
         Global.timerMgr.unSchedule(this.getMediatorName());

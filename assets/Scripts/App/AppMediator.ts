@@ -1,14 +1,22 @@
-import INotification from "../../Core/PureMVC/interface/INotification";
-import { PureMediator } from "../../Core/PureMVC/PureMediator";
-import { PureObserver } from "../../Core/PureMVC/PureObserver";
-import UIBase from "../../Core/UI/UIBase";
-import { EnumAudio } from "../Enum/EnumAudio";
-import Global from "../Global";
+import INotification from "../Core/PureMVC/interface/INotification";
+import { PureMediator } from "../Core/PureMVC/PureMediator";
+import { PureObserver } from "../Core/PureMVC/PureObserver";
+import UIBase from "../Core/UI/UIBase";
+import { EnumAudio } from "./Enum/EnumAudio";
+import Global from "./Global";
 
 export default  abstract class AppMediator extends PureMediator {
     private _notificationMap:Map<string, Function>;
+    public mediatorName: string;
+    public viewComponent: any;
+    /** 当创建的时候 */
     abstract onActive():void;
+    /** 当销毁的时候 */
     abstract onDestroy():void;
+    /** 当重新激活的时候 */
+    abstract onResume():void;
+    /** 当隐藏的时候 */
+    abstract onPaused():void;
     /**
      * set view Component then active mediator
      * Because loading UI Node may be asynchronous, wait until UI Node is loaded before onActive
@@ -50,7 +58,7 @@ export default  abstract class AppMediator extends PureMediator {
     }
 
     handleNotification(notification: INotification){
-
+        super.handleNotification(notification);
     }
 
     /**
@@ -86,5 +94,9 @@ export default  abstract class AppMediator extends PureMediator {
                 button && (button.interactable = true);
             }, time)
         });
+    }
+
+    public setScripteEnabled(sprite:cc.Sprite, isEnable:boolean = true){
+        sprite["_sgNode"].setState(isEnable ? 0 : 1);
     }
 }

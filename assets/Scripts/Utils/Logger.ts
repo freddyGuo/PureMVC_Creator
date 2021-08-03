@@ -16,7 +16,7 @@ export default class Logger {
         this.LEVEL = lv;
     }
     public  formatNow() {
-        this.date  = new Date(); //后端返回的时间戳是秒
+        this.date  = new Date(); 
         return this.date.getFullYear() + "-" + (this.date.getMonth() + 1) + "-" + this.date.getDate() + " " + 
         this.date.getHours() + ":" + this.date.getMinutes() + ":" + this.date.getSeconds() + ":" + this.date.getMilliseconds();
     }

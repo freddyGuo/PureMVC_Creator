@@ -70,9 +70,7 @@ export class PureView implements IView {
         }
     }
     public registerMediator(mediator: IMediator): void {
-       
         var name = mediator.getMediatorName();
-        console.log("registerMediator", name)
         if(this.mediatorMap[name]) {
             return;
         }

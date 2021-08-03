@@ -1,4 +1,4 @@
-import AppMediator from "../../../../../Scripts/App/View/AppMediator";
+import AppMediator from "../../../../../Scripts/App/AppMediator";
 import { EnumUI, EnumUILevel } from "../../../../../Scripts/App/Enum/EnumUI";
 import { EnumWorld } from "../../../../../Scripts/App/Enum/EnumWorld";
 import Global from "../../../../../Scripts/App/Global";

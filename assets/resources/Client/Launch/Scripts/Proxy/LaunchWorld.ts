@@ -4,7 +4,7 @@ import { EnumUI, EnumUILevel } from "../../../../../Scripts/App/Enum/EnumUI";
 import Global from "../../../../../Scripts/App/Global";
 import LaunchUI from "../UI/LaunchUI";
 import LaunchUIMediator from "../Mediator/LaunchUIMediator";
-import AppMediator from "../../../../../Scripts/App/View/AppMediator";
+import AppMediator from "../../../../../Scripts/App/AppMediator";
 import {EnumEvents } from "../../../../../Scripts/App/Enum/EnumEvents";
 import { EnumCommand } from "../../../../../Scripts/App/Enum/EnumCommand";
 import { EnumGameID } from "../../../../../Scripts/App/Enum/EnumGameID";

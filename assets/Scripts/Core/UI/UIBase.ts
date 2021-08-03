@@ -1,7 +1,7 @@
 import Global from "../../App/Global";
 
 export default class UIBase extends cc.Component {
-     /**
+    /**
      * get the cc.node by the path of  this node
      * @param path 
      */
@@ -33,7 +33,7 @@ export default class UIBase extends cc.Component {
      * @param speed  1
      */
     playAnimation(animCmpt: cc.Animation, animName, speed: number = 1){
-        return new Promise((resolved, reject)=>{
+        return new Promise<void>((resolved, reject)=>{
             try {
                 let animState = animCmpt.play(animName) as cc.AnimationState;
                 animState.speed = speed;
